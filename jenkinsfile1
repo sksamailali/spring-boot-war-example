@@ -1,8 +1,6 @@
 pipeline {
-     agent {
-       label 'test'
-       }
-     tools {
+     agent any
+tools {
         maven 'maven3' 
         }
     stages {
@@ -25,7 +23,7 @@ pipeline {
         stage("Deploy on Test"){
             steps{
                 // deploy on container -> plugin
-                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://13.59.165.158/:8080')], contextPath: '/besanttest', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcattest', path: '', url: 'http://18.118.95.98/:8080')], contextPath: '/samailtest', war: '**/*.war'
               
             }
             
@@ -38,7 +36,7 @@ pipeline {
             
             steps{
                 // deploy on container -> plugin
-                deploy adapters: [tomcat9(credentialsId: 'tomcat9', path: '', url: 'http://13.59.165.158/:8080')], contextPath: '/besantprod', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcatprod', path: '', url: 'http://18.222.80.13/:8080')], contextPath: '/samailprod', war: '**/*.war'
 
             }
         }
