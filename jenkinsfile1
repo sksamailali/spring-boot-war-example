@@ -36,7 +36,7 @@ pipeline {
             
             steps{
                 // deploy on container -> plugin
-                deploy adapters: [tomcat9(credentialsId: 'tomcatprod', path: '', url: 'http://3.128.205.158:8080')], contextPath: '/samailprod', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcattest', path: '', url: 'http://3.148.231.170:8080')], contextPath: '/samailprod', war: '**/*.war'
 
             }
         }
